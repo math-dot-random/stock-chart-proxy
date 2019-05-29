@@ -3,13 +3,9 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const port = process.env.PORT || 3000;
 const cors = require('cors');
-var httpProxy = require('http-proxy');
 const request = require('request');
 
 const app = express();
-
-//create a proxy server
-const proxy = httpProxy.createProxyServer({});
 
 app.use(cors());
 app.use(express.static(path.join(__dirname + '/../public')));
@@ -26,5 +22,3 @@ app.get('/api/stocks/:ticker/prices/:type', (req, res) => {
     }
   }).pipe(res);
   })
-
-  
